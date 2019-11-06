@@ -1,0 +1,573 @@
+.App {
+  /* background-color: brown; */
+  height: 940px;
+  text-align: center;
+  padding-top: 10;
+}
+.DetailsContener {
+  height: 940px;
+  /* background-color: blue; */
+  padding: 0px;
+  margin: 0px;
+  /* margin-left: 35%; */
+  /* padding-top: 2%; */
+  padding-top: 3%;
+  /* padding-bottom: 3%; */
+  padding-top: 5%;
+}
+.Details {
+  /* height: 940px; */
+  /* background-color: #314396; */
+  border-radius: 20px;
+}
+.Profilpic {
+  height: 300px;
+  /* background-color: green; */
+  /* padding-top: 1%; */
+  /* display: flex; */
+  align-items: center;
+  text-align: center;
+  align-content: center;
+  /* padding-left: -100%; */
+}
+/* .Details {
+  height: 283px;
+  background-color: #314396;
+} */
+.Button {
+  height: 290px;
+  /* background-color: #314396; */
+  padding-top: 20%;
+  border-radius: 20px;
+}
+.InputDetails {
+  /* padding-top: -12%; */
+  text-align: left;
+  padding-left: 10%;
+  padding-right: 10%;
+  /* background-color: #314396; */
+}
+.ButtonWidth {
+  width: 200px;
+  padding-top: 40%;
+}
+.Left {
+  background-color: white;
+  /* height: 945px; */
+  padding-left: 0;
+  padding-right: 0;
+  z-index: 1;
+  min-height: 930px;
+  position: absolute;
+  box-shadow: 2px 0px 5px grey;
+  /* border-right: 2px solid black; */
+  /* right: 1%; */
+  /* left: center; */
+}
+.Right {
+  background-color: white;
+  /* margin-left: 1%; */
+}
+.NavButton {
+  width: 285px;
+  height: 65px;
+  /* margin: 0px; */
+  /* border: 0px; */
+  /* border-radius: 0px; */
+  /* margin-left: -50px; */
+  /* margin-right: -110px; */
+  color: white;
+  /* text-align: left; */
+  /* background-color: green; */
+}
+/* button:hover {
+  background-color: pink;
+} */
+.NavButtonDropdown {
+  /* width: 285px; */
+  height: 65px;
+  color: white;
+  /* margin-left: -12px; */
+}
+.InnerDropDown {
+  /* background-color: red; */
+  /* border: 3px solid; */
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
+  /* margin-right: 100px; */
+  /* width: 10px; */
+}
+DropdownItem:hover {
+  background-color: White;
+}
+.DetailTop {
+  background-color: green;
+  height: 300px;
+  margin-right: -12px;
+  width: 100%;
+  text-align: right;
+  display: "flex";
+}
+.outset {
+  border-style: outset;
+}
+.Session {
+  /* background-color: red; */
+  height: 300px;
+  width: 20%;
+  font-size: 40px;
+  font-weight: bold;
+  /* padding-top: 5%;
+  padding-left: 2%; */
+  text-align: left;
+}
+
+.TopRight {
+  /* background-color: violet; */
+  height: 300px;
+  width: 60%;
+}
+/* .Paddingo {
+  padding-right: 0px;
+  padding-left: -100px;
+  margin-left: -12px;
+  margin-right: -300px;
+} */
+
+.Adjust {
+  margin-left: -12px;
+}
+/* .Adjust2 {
+  margin-left: -15px;
+  margin-right: -15px;
+  padding: 0px;
+} */
+.ProfilePicUserName {
+  /* text-align: right; */
+  height: 100px;
+  /* background-color: violet; */
+  width: 100%;
+  /* padding-left: 37%; */
+  /* margin-right: -150px;
+  margin-right: 30px;
+  margin-left: 50px;
+  padding-left: 50px; */
+  display: flex;
+  /* margin-left: auto; */
+}
+.Buttonss {
+  /* text-align: right; */
+  /* height: 900px; */
+  /* text-align: right; */
+  /* background-color: green; */
+  /* margin-right: 30px; */
+  /* width: 300%; */
+  padding-left: 3%;
+  padding-right: auto;
+  padding-top: 3%;
+}
+.ButtonAli {
+  text-align: right;
+  /* background-color: green; */
+  width: 900px;
+}
+.UserNam {
+  width: 85%;
+  /* background-color: aqua; */
+  font-size: 35px;
+  font-weight: bolder;
+  padding-top: 3.25%;
+}
+.Space {
+  margin-left: 20px;
+  /* font-size: 90px; */
+  padding-top: 5%;
+  /* background-color: aliceblue; */
+}
+.Alin {
+  text-align: right;
+}
+.Logo {
+  margin-top: 10px;
+  width: 100%;
+  height: 170px;
+  padding-left: 10%;
+  padding-right: 10%;
+  /* background-color: aliceblue; */
+}
+.Title {
+  /* background-color: grey; */
+  width: 35%;
+  height: 150px;
+  text-align: left;
+  font-size: 35px;
+  font-weight: bolder;
+  padding-left: 3%;
+  padding-top: 5%;
+  color: white;
+}
+.Search {
+  /* background-color: pink; */
+  width: 10%;
+  height: 150px;
+}
+.Name {
+  width: 10px;
+  /* background-color: green; */
+  height: 150px;
+  width: 45%;
+  text-align: right;
+  font-weight: bolder;
+  font-size: 35px;
+  padding-top: 45px;
+  color: white;
+}
+.Profile-Pic {
+  width: 10px;
+  /* background-color: yellow; */
+  height: 150px;
+  width: 9%;
+  text-align: left;
+}
+.DropdownBut {
+  /* background-color: green; */
+  height: 100px;
+  width: 100%;
+  /* padding-left: 60%; */
+}
+.PaddingZero {
+  padding-right: 0;
+  padding-left: 0;
+  margin-left: 0px;
+  margin-right: 0px;
+}
+.vcenter {
+  float: none;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: -4px;
+}
+.HeaderRight {
+  height: 250px;
+  background-color: "green";
+  width: 40%;
+}
+.HeaderLeft {
+  height: 250px;
+  background-color: "#fd5b5b";
+  width: 60%;
+}
+.ButtnSiz {
+  font-size: 40px;
+  color: white;
+}
+.Profilecard {
+  height: 250px;
+  width: 33%;
+  /* background-color: aliceblue; */
+  float: left;
+  padding-top: 8%;
+  /* margin-bottom: 15%; */
+}
+.sessioncard {
+  height: 250px;
+  width: 33%;
+  /* background-color: yellow; */
+  float: left;
+  padding-top: 8%;
+}
+.TicketCard {
+  height: 250px;
+  width: 33%;
+  background-color: #fd5b5b;
+  float: Left;
+  padding-top: 8%;
+}
+.InnerProfile {
+  width: 80%;
+  height: 80%;
+  background-color: #983fce;
+  margin: auto;
+  border-radius: 15px;
+  padding-top: 2%;
+  padding-left: 2%;
+  padding-right: 2%;
+  z-index: 10;
+  position: relative;
+}
+.InnerSession {
+  width: 80%;
+  height: 80%;
+  background-color: #983fce;
+  margin: auto;
+}
+.InnerTicket {
+  width: 80%;
+  height: 80%;
+  background-color: #983fce;
+  margin: auto;
+}
+.CardHeader {
+  width: 100%;
+  height: 40%;
+  font-size: 150%;
+  font-weight: bolder;
+}
+.CardBody {
+  height: 60%;
+  width: 100%;
+  height: 70%;
+  font-size: 100%;
+  font-weight: 600;
+}
+.BioHeading {
+  width: 100%;
+  /* background-color: #983fce; */
+  /* height: 200px; */
+  padding-top: 5%;
+  font-size: 35px;
+  padding-left: 2%;
+  font-weight: bolder;
+  color: grey;
+}
+.Bio {
+  /* background-color: #983fce; */
+  width: 60%;
+  padding-top: 1%;
+  padding-left: 2%;
+  font-weight: 600;
+  color: grey;
+}
+.PreferredLocation {
+  padding-top: 2%;
+  font-size: 35px;
+  padding-left: 2%;
+  font-weight: bolder;
+  color: grey;
+  /* background-color: cadetblue; */
+}
+.PrefrButton {
+  padding-left: 2%;
+  width: 100%;
+  height: 100px;
+  /* background-color: #983fce; */
+  padding-top: 2%;
+  display: inline-block;
+}
+.Contener {
+  /* padding-left: 2%; */
+  margin-left: 2%;
+  width: 100%;
+  /* background-color: #983fce; */
+  /* height: 250px; */
+  float: left;
+  margin-top: 10%;
+}
+.ContenerHeader {
+  font-size: 35px;
+  color: grey;
+  padding-left: 1%;
+  font-weight: bolder;
+  /* margin-top: 10%; */
+}
+.ContenerBody {
+  width: 80%;
+  /* background-color: #fd5b5b; */
+  border-style: outset;
+  height: 160px;
+  /* padding-top: 30px; */
+  padding: 30px;
+  margin-top: 7%;
+}
+.ContenerBodyDetails {
+  background-color: "white";
+  width: 100%;
+  /* padding: 20px; */
+}
+.ContenerBodyDetailsLeft {
+  width: 50%;
+  /* background-color: #983fce; */
+  /* height: 100px; */
+  float: left;
+  font-size: 25px;
+  font-weight: 400;
+  color: grey;
+}
+.ContenerBodyDetailsRight {
+  width: 50%;
+  /* background-color: yellow; */
+  /* height: 100px; */
+  float: left;
+  font-size: 25px;
+  font-weight: 400;
+  text-align: right;
+  color: grey;
+}
+.tableContener {
+  width: 100%;
+  /* background-color: #983fce; */
+  margin-top: 2%;
+}
+/* .Locationss {
+  display: inline-block;
+} */
+.SchoolContener {
+  width: "100%";
+  padding-left: auto;
+  padding-right: auto;
+  /* background-color: green; */
+}
+.SchoolAdd {
+  /* width: "80%"; */
+  height: 350px;
+  /* background-color: #983fce; */
+}
+.StusentSessionHeader {
+  font-size: 35px;
+  padding-top: 2%;
+  margin-left: 5%;
+  font-weight: 800;
+  /* float: none; */
+}
+.StusentSessionHeaderDetails {
+  font-size: 25px;
+  padding-top: 2%;
+  margin-left: 5%;
+  /* width: 100%; */
+  /* background-color: red; */
+  /* float: left; */
+}
+.StusentSessionHeaderDetails2 {
+  font-size: 25px;
+  /* padding-top: 2%; */
+  margin-right: 5%;
+  float: left;
+  padding-bottom: 1%;
+  /* background-color: #983fce; */
+  width: 26%;
+}
+.StusentSessionHeaderDetails3 {
+  font-size: 25px;
+  /* padding-top: 2%; */
+  margin-right: 5%;
+  float: left;
+  padding-bottom: 1%;
+  /* background-color: #983fce; */
+  width: 15%;
+}
+
+.circle.small {
+  border: 3px solid #f84342;
+  border-radius: 50%;
+  width: 280px;
+  height: 280px;
+  z-index: 86;
+}
+
+.circle.filled {
+  background-color: #666666;
+}
+
+.circle h3 {
+  margin-top: 55px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  color: #f84342;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  display: block;
+}
+
+.circle h1 {
+  text-align: center;
+  font-family: Times, serif;
+  font-weight: 800;
+  font-size: 55px;
+  color: grey;
+  text-decoration: none;
+  display: block;
+  letter-spacing: -0.02em;
+  word-spacing: -0.02em;
+  line-height: 1;
+  /* vertical-align: middle; */
+  margin-top: 45px;
+}
+
+body {
+  background: #f1f1f1;
+  font-family: "Inconsolata", monospace;
+  font-weight: bold;
+  color: gray;
+  text-align: center;
+  -webkit-font-smoothing: antialiased;
+}
+.box-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 50px;
+}
+.box {
+  padding: 30px;
+  /* margin: 20px; */
+  background: white;
+  width: 250px;
+  height: 250px;
+  border: 1px solid #d6d6d6;
+  box-shadow: 0 2px 3px 0px rgba(0, 0, 0, 0.25);
+  border-radius: 3px;
+  transition: 0.2s all;
+  text-align: center;
+  padding-top: 40px;
+  padding-top: auto;
+  padding-bottom: auto;
+  font-size: 24px;
+  color: #ff0042;
+  /* background-color: #666666; */
+}
+.box-wrap:hover .box {
+  /* filter: blur(1px); */
+  /* opacity: 0.9; */
+  /* transform: scale(1); */
+  box-shadow: none;
+}
+.box-wrap:hover .box:hover {
+  transform: scale(1);
+  filter: blur(0px);
+  /* opacity: 1; */
+  box-shadow: 0 8px 20px 0px rgba(0, 0, 0, 0.125);
+}
+.OneLine {
+  padding-top: 110px;
+}
+.TwoLine {
+  padding-top: 90px;
+}
+
+ul.breadcrumb {
+  padding: 10px 16px;
+  list-style: none;
+  background-color: #eee;
+}
+ul.breadcrumb li {
+  display: inline;
+  font-size: 14px;
+}
+ul.breadcrumb li + li:before {
+  padding: 8px;
+  color: blue;
+  content: "/\00a0";
+}
+ul.breadcrumb li a {
+  color: #0275d8;
+  text-decoration: none;
+}
+ul.breadcrumb li a:hover {
+  color: #01447e;
+  text-decoration: underline;
+}
+.breadcrumb {
+  content: "|";
+}
