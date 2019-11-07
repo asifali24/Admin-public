@@ -31,7 +31,7 @@ class Home extends Component {
       const loginData = {
         email: this.state.emailAddress,
         password: this.state.password,
-        role: "ADMIN",
+        role: "ADMIN"
         // loading: true
       };
       /****login data passed to login reducer */
@@ -92,8 +92,12 @@ class Home extends Component {
                             />
                           </div>
                           <div
-                            className="Button"
-                            style={{ textAlign: "center" }}
+                            // className="Button"
+                            style={{
+                              textAlign: "center",
+                              paddingTop: "20%",
+                              borderRadius: "20px"
+                            }}
                           >
                             <button
                               style={{ width: "100%" }}
