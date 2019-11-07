@@ -500,7 +500,7 @@ body {
   font-family: "Inconsolata", monospace;
   font-weight: bold;
   color: gray;
-  text-align: center;
+  /* text-align: center; */
   -webkit-font-smoothing: antialiased;
 }
 .box-wrap {
