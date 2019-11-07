@@ -58,7 +58,7 @@
   padding-right: 0;
   z-index: 1;
   min-height: 930px;
-  position: absolute;
+  /* position: absolute; */
   box-shadow: 2px 0px 5px grey;
   /* border-right: 2px solid black; */
   /* right: 1%; */
