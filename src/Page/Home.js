@@ -96,7 +96,8 @@ class Home extends Component {
                             style={{
                               textAlign: "center",
                               paddingTop: "20%",
-                              borderRadius: "20px"
+                              borderRadius: "20px",
+                              height: "30px"
                             }}
                           >
                             <button
