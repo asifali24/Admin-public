@@ -95,7 +95,7 @@ class Home extends Component {
                             // className="Button"
                             style={{
                               textAlign: "center",
-                              paddingTop: "20%",
+                              paddingTop: "5%",
                               borderRadius: "20px",
                               height: "30px"
                             }}
