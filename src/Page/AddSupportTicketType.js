@@ -13,7 +13,12 @@ class AddSupportTicketType extends Component {
       title: "Add Support Ticket Type",
       ticket: ""
     };
+    this.getToken();
   }
+  getToken = async () => {
+    const token = await sessionStorage.getItem("userToken");
+    this.setState({ token: token });
+  };
   ticketAdd = e => {
     let target = e.target;
     let value = target.type === "checkbox" ? target.checked : target.value;
@@ -23,14 +28,10 @@ class AddSupportTicketType extends Component {
     });
   };
 
-  getToken = async () => {
-    const token = await sessionStorage.getItem("userToken");
-    this.setState({ token: token });
-  };
-
   onHandelChange = e => {
     e.preventDefault();
     const token = this.state.token;
+    console.log(token + "******");
 
     if (this.state.ticket) {
       const ticket = {

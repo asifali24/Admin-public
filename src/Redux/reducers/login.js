@@ -3,17 +3,28 @@ const initialState = {
   loggedIn: false,
   user: null,
   loader: false,
-  errorAlert: false
+  errorAlert: false,
+  buttonName: "Login"
 };
 
 export function login(state = initialState, action) {
   switch (action.type) {
+    case userConstants.LOGIN_REQUEST:
+      return {
+        ...state,
+        loggedIn: false,
+        user: action.payload,
+        loader: true,
+        buttonName: "processing...",
+        errorAlert: false
+      };
     case userConstants.LOGIN_SUCCESS:
       return {
         ...state,
         loggedIn: true,
         user: action.payload,
-        loader: true
+        loader: false,
+        errorAlert: false
       };
     case userConstants.LOGIN_FAILURE:
       return {

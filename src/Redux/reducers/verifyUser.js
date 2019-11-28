@@ -1,26 +1,25 @@
 import { userConstants } from "../constants";
 const initialState = {
   loader: false,
-  ticket: ""
+  status: { notes: "Verified", is_verified: true }
 };
 
-export function addTickets(state = initialState, action) {
-  // console.log(action.type + "////////////////");
-  // console.log(action.payload + "***************");
+export function verifyUser(state = initialState, action) {
+  console.log(action.type);
   switch (action.type) {
-    case userConstants.ADD_TICKET_REQUEST:
+    case userConstants.CHANGE_STATUS_REQUEST:
       return {
         ...state,
-        ticket: action.payload,
+        status: action.payload,
         loader: true
       };
-    case userConstants.ADD_TICKET_SUCCESS:
+    case userConstants.CHANGE_STATUS_SUCCESS:
       return {
         ...state,
-        ticket: action.payload,
+        status: action.payload,
         loader: false
       };
-    case userConstants.ADD_TICKET_FAILURE:
+    case userConstants.CHANGE_STATUS_FAILURE:
       return {
         ...state,
         error: action.payload,

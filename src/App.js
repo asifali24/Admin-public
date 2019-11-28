@@ -54,6 +54,7 @@ import AddLegale from "./Page/AddLegale";
 import AddPlatform from "./Page/AddPlatform";
 import AddTutorSessionMaster from "./Page/AddTutorSessionMaster";
 import addAdmin from "./Page/addAdmin";
+import masterLayout from "./Page/MasterLayoyt";
 
 import { Provider } from "react-redux";
 import { store } from "./Redux/helper/store";
@@ -63,6 +64,7 @@ function App() {
     <Provider store={store}>
       <BrowserRouter>
         <Switch>
+          <Route exact path="/masterLayout" component={masterLayout} />
           <Route exact path="/" component={Home} />
           <Route exact path="/master/Gender" component={Gender} />
           <Route exact path="/master/Gender/add" component={AddGender} />

@@ -4,69 +4,63 @@ import LeftSide from "../Component/LeftSideButton";
 import Header from "../Component/Header";
 import ButtonsGroup from "../Component/ButtonsGroup";
 import { connect } from "react-redux";
-import { login } from "../Redux/actions/userActions";
+import { login, getSession } from "../Redux/actions/userActions";
 import { Redirect } from "react-router-dom";
 
 class Session extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: "Session"
+      title: "Session",
+      getSession: [],
+      id: "",
+      tutor: "",
+      StudentDetails: "",
+      payment: "",
+      Subjects: "",
+      status: ""
     };
+    this.getToken();
+    this.shouldComponentRender = this.shouldComponentRender.bind(this);
   }
+
+  getToken = async () => {
+    const token = await sessionStorage.getItem("userToken");
+    this.setState({ token: token }, () => {
+      this.props.getSession(token);
+    });
+  };
+
+  shouldComponentRender() {
+    if (this.pending === false) return false;
+    return true;
+  }
+
   render() {
     if (!sessionStorage.getItem("userToken")) {
       return <Redirect to="/" />;
     }
-    const sessions = [
-      {
-        id: "01",
-        tutor: "Andrew sweat",
-        StudentDetails: "rtgfewds",
-        Date: "07/09/2019",
-        payment: "$65",
-        Subjects: "English , Maths",
-        status: "Active"
-      },
-      {
-        id: "02",
-        tutor: "Andrew",
-        StudentDetails: "rtgfewds",
-        Date: "07/09/2019",
-        payment: "$65",
-        Subjects: "English , Maths",
-        status: "Active"
-      },
-      {
-        id: "03",
-        tutor: "Andrew",
-        StudentDetails: "rtgfewds",
-        Date: "07/09/2019",
-        payment: "$65",
-        Subjects: "English , Maths",
-        status: "Active"
-      },
-      {
-        id: "04",
-        tutor: "Andrew",
-        StudentDetails: "rtgfewds",
-        Date: "07/09/2019",
-        payment: "$65",
-        Subjects: "English , Maths",
-        status: "Active"
-      }
-    ];
-    const sessionList = sessions.map(session => (
-      <tr>
-        <td>{session.id}</td>
-        <td>{session.tutor}</td>
-        <td>{session.StudentDetails}</td>
-        <td>{session.status}</td>
-        <td>{session.Date}</td>
-        <td>{session.payment}</td>
-        <td>{session.Subjects}</td>
-      </tr>
-    ));
+    let sessionList =
+      this.props.sessionLists.length > 0 ? (
+        this.props.sessionLists.map((allSession, i) => {
+          return (
+            <tr>
+              <td>{i + 1}</td>
+              <td>{allSession.tutor}</td>
+              <td>{allSession.student}</td>
+              <td>{allSession.sessionStatus}</td>
+              <td>
+                {new Date(allSession.tutoringSessionDate).toLocaleDateString()}
+              </td>
+              <td>{allSession.paymentMode}</td>
+              <td>{allSession.subject}</td>
+            </tr>
+          );
+        })
+      ) : (
+        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif" />
+      );
+
     return (
       <div className="container-fluid">
         <div className="row">
@@ -87,11 +81,11 @@ class Session extends Component {
                 <thead class="thead-light">
                   <tr>
                     <th>Id</th>
-                    <th>Tutor</th>
-                    <th>Student Details</th>
+                    <th>Tutor Name</th>
+                    <th>Student Name</th>
                     <th>Status</th>
                     <th>Date</th>
-                    <th>Payment</th>
+                    <th>Payment Mode</th>
                     <th>Subject(s)</th>
                   </tr>
                 </thead>
@@ -106,11 +100,9 @@ class Session extends Component {
 }
 const mapStateToProps = state => {
   return {
-    loginUser: state.login
+    loginUser: state.login,
+    sessionLists: state.getSession.sessions
   };
 };
 
-export default connect(
-  mapStateToProps,
-  { login }
-)(Session);
+export default connect(mapStateToProps, { login, getSession })(Session);

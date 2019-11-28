@@ -4,7 +4,6 @@ import profile from "../img/profile.svg";
 import { BrowserRouter, Route, NavLink, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { login } from "../Redux/actions/userActions";
-import sdddsd from "../Redux/actions";
 
 class Home extends Component {
   constructor(props) {
@@ -13,7 +12,8 @@ class Home extends Component {
       emailAddress: "",
       password: "",
       loginUser: "false",
-      loading: false
+      loading: true,
+      buttonName: "Login"
     };
   }
   handelChange = e => {
@@ -32,21 +32,25 @@ class Home extends Component {
       const loginData = {
         email: this.state.emailAddress,
         password: this.state.password,
-        role: "ADMIN"
-        // loading: true
+        role: "ADMIN",
+        loading: true
       };
-      /****login data passed to login reducer */
+
       this.props.login(loginData);
     }
   };
 
   render() {
-    if (this.props.loginUser.loggedIn || sessionStorage.getItem("userToken")) {
-      return <Redirect to="/Dashboard" />;
-      // if (sessionStorage.getItem("userToken")) {
-      //   return <Redirect to="/Dashboard" />;
-      // }
+    const { loader, loggedIn, errorAlert } = this.props;
+    // console.log(errorAlert, "**************=============");
+    if (errorAlert == true) {
+      alert("Invalid Login Details");
+      return <Redirect to="/" />;
     }
+    if (this.props.loggedIn || sessionStorage.getItem("userToken")) {
+      return <Redirect to="/Dashboard" />;
+    }
+
     return (
       <BrowserRouter>
         <Route>
@@ -93,22 +97,16 @@ class Home extends Component {
                             />
                           </div>
                           <div
-                            // className="Button"
-                            style={{
-                              textAlign: "center",
-                              paddingTop: "5%",
-                              borderRadius: "20px",
-                              height: "30px"
-                            }}
+                            className="Button"
+                            style={{ textAlign: "center" }}
                           >
                             <button
                               style={{ width: "100%" }}
                               type="button"
                               className="btn btn-primary ButtonWidth"
                               onClick={e => this.handelSubmit(e)}
-                              value={this.state.loading}
                             >
-                              Log In
+                              {loader && !loggedIn ? "Procession..." : "Login"}
                             </button>
                           </div>
                         </form>
@@ -125,13 +123,13 @@ class Home extends Component {
     );
   }
 }
-const mapStateToProps = state => {
+const mapStateToProps = ({ login }) => {
+  const { loader, loggedIn, errorAlert } = login;
   return {
-    loginUser: state.login
+    loggedIn,
+    loader,
+    errorAlert
   };
 };
 
-export default connect(
-  mapStateToProps,
-  { login }
-)(Home);
+export default connect(mapStateToProps, { login })(Home);

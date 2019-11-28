@@ -3,11 +3,16 @@ import "../App.css";
 import LeftSide from "../Component/LeftSideButton";
 import Header from "../Component/Header";
 import ButtonsGroup from "../Component/ButtonsGroup";
-import { Button, Popover, PopoverHeader, PopoverBody } from "reactstrap";
+// import { Button, Popover, PopoverHeader, PopoverBody } from "reactstrap";
 import { NavLink } from "react-router-dom";
-import Tutor from "../Component/Tutor";
+// import Tutor from "../Component/Tutor";
+import { connect } from "react-redux";
+import { login, getTutors } from "../Redux/actions/userActions";
+import { createConfigItem } from "@babel/core";
+// import { Redirect } from "react-router-dom";
+import { verifyUser } from "../Redux/actions/userActions";
 
-export default class Tutors extends Component {
+class Tutors extends Component {
   constructor(props) {
     super(props);
 
@@ -16,8 +21,50 @@ export default class Tutors extends Component {
     this.state = {
       popoverOpen: false,
       title: "Tutors",
-      color: "red"
+      color: "red",
+      toVerifiedId: "",
+      getTutors: [],
+      notes: "Veified",
+      is_verified: true
     };
+    console.log("construhagfjdgasa");
+    this.getToken();
+
+    this.shouldComponentRender = this.shouldComponentRender.bind(this);
+  }
+
+  // UserId = e => {
+  //   this.setState({
+  //     toVerifiedId: e.target.value
+  //   });
+  //   console.log(this.state.toVerifiedId);
+  // };
+
+  // onHandelChange = e => {
+  //   e.preventDefault();
+  //   const token = this.state.token;
+  //   // console.log(this.state.Gender);
+  //   // if (this.state.toVerifiedId) {
+  //   const ToVerifiedId = {
+  //     toVerifiedId: this.state.toVerifiedId
+  //   };
+  //   console.log(ToVerifiedId);
+  //   // this.props.statusChange(ToVerifiedId, token);
+  //   // }
+  // };
+
+  getToken = async () => {
+    const token = await sessionStorage.getItem("userToken");
+    this.setState({ token: token }, () => {
+      this.props.getTutors(token);
+    });
+  };
+
+  shouldComponentRender() {
+    // const { pending } = this.props;
+    if (this.pending === false) return false;
+
+    return true;
   }
 
   togglePopOver() {
@@ -25,90 +72,83 @@ export default class Tutors extends Component {
       popoverOpen: !this.state.popoverOpen
     });
   }
-
+  onHandleStatusChange = id => {
+    // id.preventDefault();
+    const token = this.state.token;
+    let status = window.confirm("Do you want to change the status", id);
+    if (status) {
+      const ids = {
+        id,
+        is_verified: this.state.is_verified,
+        notes: this.state.notes
+      };
+      this.props.verifyUser(ids, token);
+      setTimeout(() => {
+        this.props.getTutors(token);
+      }, 3000);
+    }
+  };
   render() {
-    const tutors = [
-      {
-        id: 1,
-        name: "abc",
-        contactDetails: "7452169856",
-        joiningDate: "09/06/2019",
-        status: "Active",
-        sessionTaken: 540
-      },
-      {
-        id: 2,
-        name: "abc",
-        contactDetails: "5655169856",
-        joiningDate: "04/06/2019",
-        status: "Active",
-        sessionTaken: "540"
-      },
-      {
-        id: 3,
-        name: "sedfdsbc",
-        contactDetails: "74521698565558",
-        joiningDate: "09/06/2019",
-        status: "Active",
-        sessionTaken: "540"
-      },
-      {
-        id: 44,
-        name: "ssdgsdhbgabc",
-        contactDetails: "7452169856",
-        joiningDate: "09/06/2019",
-        status: "Active",
-        sessionTaken: "540"
-      }
-    ];
-    const tutorList = tutors.map(tutor => (
-      <tr>
-        <td>{tutor.id}</td>
-        <td>
-          <NavLink to="/tutorProfile">
-            <button type="button" className="btn ">
-              {tutor.name}
-            </button>
-          </NavLink>
-        </td>
-        <td>{tutor.contactDetails}</td>
-        <td>{tutor.status}</td>
-        <td>{tutor.joiningDate}</td>
-        <td>{tutor.sessionTaken}</td>
-        <td>
-          <div>
-            <button
-              type="button"
-              className="btn btn-danger"
-              style={{ borderRadius: "15px" }}
-            >
-              Edit
-            </button>
-            <button type="button" className="btn ">
-              Deactivate
-            </button>
-          </div>
-        </td>
-        <td>
-          <Button id="Popover1" type="button">
-            ...
-          </Button>
-          <Popover
-            placement="bottom"
-            isOpen={this.state.popoverOpen}
-            target="Popover1"
-            toggle={this.togglePopOver}
-          >
-            <PopoverBody>
-              <div>
-                <button>Send mail</button>
-                <button>Send Notification</button>
-              </div>
-            </PopoverBody>
-          </Popover>
-        </td>
-      </tr>
-    ));
+    let tutorList =
+      this.props.tutorData.length > 0 ? (
+        this.props.tutorData.map((tutor, i) => {
+          return (
+            <tr>
+              <td>{i + 1}</td>
+              <td>
+                <NavLink to="/tutorProfile">
+                  <button type="button" className="btn ">
+                    {tutor.name}
+                  </button>
+                </NavLink>
+              </td>
+              <td>{tutor.phone}</td>
+              <td>{tutor.isVerified ? "Verified" : "Not-Verified"}</td>
+              <td>{new Date(tutor.joining).toLocaleDateString()}</td>
+              <td>{tutor.sessionTaken}</td>
+              <td>
+                <div>
+                  <button
+                    type="button"
+                    className="btn btn-danger"
+                    style={{ borderRadius: "15px" }}
+                    name="toVerifiedId"
+                    id="toVerifiedId"
+                    onClick={() => {
+                      this.onHandleStatusChange(tutor.id);
+                    }}
+                  >
+                    Edit Status
+                  </button>
+                  {/* <button type="button" className="btn ">
+                    Deactivate
+                  </button> */}
+                </div>
+              </td>
+              {/* <td>
+                <Button id="Popover1" type="button">
+                  ...
+                </Button>
+                <Popover
+                  placement="bottom"
+                  isOpen={this.state.popoverOpen}
+                  target="Popover1"
+                  toggle={this.togglePopOver}
+                >
+                  <PopoverBody>
+                    <div>
+                      <button>Send mail</button>
+                      <button>Send Notification</button>
+                    </div>
+                  </PopoverBody>
+                </Popover>
+              </td> */}
+            </tr>
+          );
+        })
+      ) : (
+        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif" />
+      );
     return (
       <div className="container-fluid">
         <div className="row">
@@ -129,14 +169,14 @@ export default class Tutors extends Component {
               <table class="table" style={{ textAlign: "center" }}>
                 <thead class="thead-light">
                   <tr>
-                    <th>Id</th>
+                    <th>S.No</th>
                     <th>Name</th>
                     <th>Contact Details</th>
                     <th>Status</th>
                     <th>Joining Date</th>
                     <th>Session Taken</th>
                     <th>Action</th>
-                    <th style={{ fontSize: "25px" }}>✚</th>
+                    {/* <th style={{ fontSize: "25px" }}>✚</th> */}
                   </tr>
                 </thead>
                 <tbody>{tutorList}</tbody>
@@ -148,3 +188,17 @@ export default class Tutors extends Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  // console.log(state.getTutors);
+
+  return {
+    loginUser: state.login,
+    tutorData: state.getTutors.users,
+    verifyData: state.verifyUser
+  };
+};
+
+export default connect(mapStateToProps, { login, getTutors, verifyUser })(
+  Tutors
+);

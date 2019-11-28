@@ -22,12 +22,6 @@ class AddGender extends Component {
     this.setState({
       Gender: e.target.value
     });
-    // let target = e.target;
-    // let value = target.type === "checkbox" ? target.checked : target.value;
-    // let name = target.name;
-    // this.setState({
-    //   [name]: value
-    // });
   };
 
   getToken = async () => {
@@ -169,7 +163,4 @@ const mapStateToProps = state => {
     AddGender: state.Gender
   };
 };
-export default connect(
-  mapStateToProps,
-  { addGenders }
-)(AddGender);
+export default connect(mapStateToProps, { addGenders })(AddGender);

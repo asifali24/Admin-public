@@ -1,26 +1,29 @@
 import { userConstants } from "../constants";
 const initialState = {
   loader: false,
-  ticket: ""
+  AddSubscription: {
+    sessions: null,
+    duration: null,
+    price: null,
+    price_bucket_id: null
+  }
 };
 
-export function addTickets(state = initialState, action) {
-  // console.log(action.type + "////////////////");
-  // console.log(action.payload + "***************");
+export function addSubscription(state = initialState, action) {
   switch (action.type) {
-    case userConstants.ADD_TICKET_REQUEST:
+    case userConstants.ADD_SUBSCRIPTION_REQUEST:
       return {
         ...state,
-        ticket: action.payload,
+        addSubject: action.payload,
         loader: true
       };
-    case userConstants.ADD_TICKET_SUCCESS:
+    case userConstants.ADD_SUBSCRIPTION_SUCCESS:
       return {
         ...state,
-        ticket: action.payload,
+        addSubject: action.payload,
         loader: false
       };
-    case userConstants.ADD_TICKET_FAILURE:
+    case userConstants.ADD_SUBSCRIPTION_FAILURE:
       return {
         ...state,
         error: action.payload,

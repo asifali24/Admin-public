@@ -30,11 +30,6 @@ class AddSubjects extends Component {
       [name]: value
     });
   };
-  // AddSchool = e => {
-  //   this.setState({
-  //     school: e.target.value
-  //   });
-  // };
   onHandelChange = e => {
     console.log("***********" + this.state.school);
     e.preventDefault();
@@ -203,7 +198,4 @@ const mapStateToProps = state => {
     subject_course: state.subject_course
   };
 };
-export default connect(
-  mapStateToProps,
-  { addSubjects }
-)(AddSubjects);
+export default connect(mapStateToProps, { addSubjects })(AddSubjects);

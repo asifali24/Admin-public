@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "../App.css";
-import { BrowserRouter, Route, Switch, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import LeftSide from "../Component/LeftSideButton";
 import Header from "../Component/Header";
 
