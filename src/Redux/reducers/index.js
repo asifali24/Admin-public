@@ -10,6 +10,8 @@ import { verifyUser } from "./verifyUser";
 import { addSubscription } from "./addSubscription";
 import { getPriceBucket } from "./getPriceBucket";
 import { getSession } from "./getSessions";
+import { getSchool } from "./getSchool";
+import { getGender } from "./getGender";
 
 const rootReducer = combineReducers({
   login,
@@ -22,7 +24,9 @@ const rootReducer = combineReducers({
   verifyUser,
   addSubscription,
   getPriceBucket,
-  getSession
+  getSession,
+  getSchool,
+  getGender
 });
 
 export default rootReducer;

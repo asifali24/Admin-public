@@ -3,33 +3,49 @@ import "../App.css";
 import LeftSide from "../Component/LeftSideButton";
 import Header from "../Component/Header";
 import { NavLink } from "react-router-dom";
+import { getSchool, login } from "../Redux/actions/userActions";
+import { connect } from "react-redux";
 
-export default class School extends Component {
+class School extends Component {
   constructor(props) {
     super(props);
     this.state = {
       title: "School"
     };
+    this.getToken();
+
+    this.shouldComponentRender = this.shouldComponentRender.bind(this);
   }
+
+  getToken = async () => {
+    const token = await sessionStorage.getItem("userToken");
+    this.setState({ token: token }, () => {
+      this.props.getSchool(token);
+    });
+  };
+
+  shouldComponentRender() {
+    if (this.pending === false) return false;
+    return true;
+  }
+
   render() {
-    const SchoolDetails = [
-      {
-        id: "565854",
-        // date: "26646",
-        schoolname: "xdcfghjkljkjhgfcgvhbjnk xdcfgvhbjlkl;jh",
-        address:
-          "hsgduu wdugudguydu udguygdsuyguysdg uy gdsuyf gsyud guyd guygsdduygsdu guysd guy ",
-        domian: "sdfffsfsg@gdrfvg.com"
-      }
-    ];
-    const SchoolDetailsList = SchoolDetails.map(sch => (
-      <tr style={{ textAlign: "center" }}>
-        <td>{sch.id}</td>
-        <td>{sch.schoolname}</td>
-        <td>{sch.address}</td>
-        <td>{sch.domian}</td>
-      </tr>
-    ));
+    let schoolList =
+      this.props.schools.length > 0 ? (
+        this.props.schools.map((schools, i) => {
+          return (
+            <tr style={{ textAlign: "center" }}>
+              <td>{++i}</td>
+              <td>{schools.name}</td>
+              <td>{schools.address}</td>
+              <td>{schools.email}</td>
+            </tr>
+          );
+        })
+      ) : (
+        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif" />
+      );
+
     return (
       <div className="container-fluid">
         <div className="row">
@@ -72,13 +88,13 @@ export default class School extends Component {
               <table class="table">
                 <thead>
                   <tr style={{ textAlign: "center" }}>
-                    <th>ID</th>
+                    <th>S.No</th>
                     <th>School Name</th>
                     <th>Address</th>
                     <th>Domain</th>
                   </tr>
                 </thead>
-                <tbody>{SchoolDetailsList}</tbody>
+                <tbody>{schoolList}</tbody>
               </table>
             </div>
           </div>
@@ -87,3 +103,12 @@ export default class School extends Component {
     );
   }
 }
+const mapStateToProps = state => {
+  return {
+    loginUser: state.login,
+    schools: state.getSchool.school,
+    loading: state.loading
+  };
+};
+
+export default connect(mapStateToProps, { login, getSchool })(School);

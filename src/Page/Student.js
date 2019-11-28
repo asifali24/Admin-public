@@ -71,7 +71,11 @@ class Student extends Component {
                   </button>
                 </NavLink>
               </td>
-              <td>{studentDetails.phone}</td>
+              <td>
+                {studentDetails.email}
+                <br />
+                {studentDetails.phone}
+              </td>
               <td>{studentDetails.isVerified ? "Verified" : "Not-Verified"}</td>
               <td>{new Date(studentDetails.joining).toLocaleDateString()}</td>
               <td>{studentDetails.sessionTaken}</td>

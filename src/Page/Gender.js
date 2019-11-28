@@ -3,36 +3,47 @@ import "../App.css";
 import LeftSide from "../Component/LeftSideButton";
 import Header from "../Component/Header";
 import { NavLink } from "react-router-dom";
+import { login, getGender } from "../Redux/actions/userActions";
+import { connect } from "react-redux";
 import generate from "@babel/generator";
 
-export default class Gender extends Component {
+class Gender extends Component {
   constructor(props) {
     super(props);
     this.state = {
       title: "Gender"
     };
+    this.getToken();
+    this.shouldComponentRender = this.shouldComponentRender.bind(this);
+  }
+
+  getToken = async () => {
+    const token = await sessionStorage.getItem("userToken");
+    this.setState({ token: token }, () => {
+      this.props.getGender(token);
+    });
+  };
+
+  shouldComponentRender() {
+    if (this.pending === false) return false;
+    return true;
   }
   render() {
-    const genders = [
-      {
-        sl: "01",
-        Gender: "Male"
-      },
-      {
-        sl: "02",
-        Gender: "Female"
-      },
-      {
-        sl: "03",
-        Gender: "Female"
-      }
-    ];
-    const genderList = genders.map(gen => (
-      <tr style={{ textAlign: "center" }}>
-        <td>{gen.sl}</td>
-        <td>{gen.Gender}</td>
-      </tr>
-    ));
+    let genderList =
+      this.props.genders.length > 0 ? (
+        this.props.genders.map((genders, i) => {
+          // console.log(genders, "------------------+++++++++++++++");
+          return (
+            <tr style={{ textAlign: "center" }}>
+              <td>{++i}</td>
+              <td>{genders.type}</td>
+            </tr>
+          );
+        })
+      ) : (
+        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif" />
+      );
+
     return (
       <div className="container-fluid">
         <div className="row">
@@ -87,3 +98,12 @@ export default class Gender extends Component {
     );
   }
 }
+const mapStateToProps = state => {
+  return {
+    loginUser: state.login,
+    genders: state.getGender.gender,
+    loading: state.loading
+  };
+};
+
+export default connect(mapStateToProps, { login, getGender })(Gender);

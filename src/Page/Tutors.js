@@ -102,7 +102,11 @@ class Tutors extends Component {
                   </button>
                 </NavLink>
               </td>
-              <td>{tutor.phone}</td>
+              <td>
+                {tutor.email}
+                <br />
+                {tutor.phone}
+              </td>
               <td>{tutor.isVerified ? "Verified" : "Not-Verified"}</td>
               <td>{new Date(tutor.joining).toLocaleDateString()}</td>
               <td>{tutor.sessionTaken}</td>

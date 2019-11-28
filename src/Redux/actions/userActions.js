@@ -378,7 +378,7 @@ export const getPriceBucket = token => dispatch => {
       });
     });
 };
-/******************Ge Session ************************ ****************************/
+/******************Get Session ************************ ****************************/
 export const getSession = token => dispatch => {
   console.log("****************************************************");
   var sessionData = [];
@@ -418,6 +418,80 @@ export const getSession = token => dispatch => {
       console.log(error);
       dispatch({
         type: userConstants.GET_SESSION_FAILURE,
+        payload: error
+      });
+    });
+};
+/************************************Get School****************************** */
+export const getSchool = token => dispatch => {
+  console.log("****************************************************");
+  var schoolData = [];
+  dispatch({
+    type: userConstants.GET_SCHOOL_REQUEST,
+    payload: token
+  });
+  axios({
+    url: BASE_URL + "system/school",
+    headers: { Authorization: AuthData, Token: token }
+  })
+    .then(res => {
+      console.log(res.data);
+      let len = res.data.schools.length;
+      for (let i = 0; i < len; i++) {
+        var data = {
+          name: res.data.schools[i].name,
+          address: res.data.schools[i].address,
+          email: res.data.schools[i].email_domain
+        };
+        schoolData.push(data);
+      }
+
+      dispatch({
+        type: userConstants.GET_SCHOOL_SUCCESS,
+        payload: schoolData
+      });
+    })
+    .catch(error => {
+      console.log(error);
+      dispatch({
+        type: userConstants.GET_SCHOOL_FAILURE,
+        payload: error
+      });
+    });
+};
+/************************GET GENDER****************** */
+export const getGender = token => dispatch => {
+  console.log("****************************************************");
+  var genderData = [];
+  dispatch({
+    type: userConstants.GET_GENDER_REQUEST,
+    payload: token
+  });
+  axios({
+    url: BASE_URL + "system/gender",
+    headers: { Authorization: AuthData, Token: token }
+  })
+    .then(res => {
+      console.log(res.data);
+      let len = res.data.gender.length;
+      for (let i = 0; i < len; i++) {
+        var data = {
+          // name: res.data.gender[i].name,
+          type: res.data.gender[i].type
+          // email: res.data.gender[i].email_domain
+        };
+        genderData.push(data);
+      }
+
+      dispatch({
+        type: userConstants.GET_GENDER_SUCCESS,
+        payload: genderData
+      });
+    })
+    .catch(error => {
+      console.log(error);
+      dispatch({
+        type: userConstants.GET_GENDER_FAILURE,
         payload: error
       });
     });
