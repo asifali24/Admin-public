@@ -1,7 +1,7 @@
 body,
 * {
   margin: 0;
-  font-family: "Alegreya Sans", sans-serif;
+  font-family: "Noto Sans HK", sans-serif;
   /* "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
     "Helvetica Neue", sans-serif; */
   /* -webkit-font-smoothing: antialiased;
@@ -9,5 +9,5 @@ body,
 }
 
 code {
-  font-family: "Alegreya Sans", sans-serif;
+  font-family: "Noto Sans HK", sans-serif;
 }
